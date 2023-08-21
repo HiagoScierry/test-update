@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+use App\Repositories\ClientRepository;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('listClients');
 });
