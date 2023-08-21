@@ -88,6 +88,9 @@ class ClientRepository
         }
     }
 
-
+    public static function getClientByDocument($document)
+    {
+        return Client::where('document', $document)->first();
+    }
 
 }
