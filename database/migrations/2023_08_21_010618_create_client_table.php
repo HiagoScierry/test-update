@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('name', 100)->nullable(false);
-            $table->string('document', 14)->nullable(false);
+            $table->string('document', 14)->unique()->nullable(false);
             $table->date('birth_date')->nullable(false);
             $table->string('sex', 1)->nullable(false);
             $table->string('address', 100)->nullable(false);
