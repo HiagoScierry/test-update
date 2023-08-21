@@ -26,7 +26,7 @@ class ClientFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            "document" => $this->faker->numerify('###########'),
+            "document" => $this->faker->numerify('###.###.###-##'),
             'birth_date' => $this->faker->date(),
             'sex' => $this->faker->randomElement(['M', 'F']),
             'address' => $this->faker->streetAddress,

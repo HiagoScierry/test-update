@@ -19,7 +19,7 @@ class ClientController extends Controller {
     }
 
     public function store(Request $request) {
-        $requestBody = $request->json()->all();
+        $requestBody = $request->all();
 
         $this->validate($request, [
             'name' => 'required|max:100',
@@ -49,11 +49,20 @@ class ClientController extends Controller {
     }
 
     public function show($id) {
+
+        $clientExists = $this->clientRepository->getClientById($id);
+
+        if(!$clientExists) {
+            return response()->json([
+                'message' => 'Client not exists'
+            ], 409);
+        }
+
         return response()->json($this->clientRepository->show($id), 200);
     }
 
     public function update(Request $request, $id) {
-        $requestBody = $request->json()->all();
+        $requestBody = $request->all();
 
         $clientExists = $this->clientRepository->getClientById($id);
 
