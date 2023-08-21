@@ -6,12 +6,12 @@ use App\Models\Client;
 
 class ClientRepository
 {
-    public static function index()
+    public function index()
     {
         return Client::all();
     }
 
-    public static function store($requestBody)
+    public function store($requestBody)
     {
         try {
 
@@ -26,7 +26,7 @@ class ClientRepository
         }
     }
 
-    public static function show($id)
+    public function show($id)
     {
         try {
             $client = Client::find($id);
@@ -45,7 +45,7 @@ class ClientRepository
         }
     }
 
-    public static function update($requestBody, $id)
+    public function update($requestBody, $id)
     {
         try {
             $client = Client::find($id);
@@ -66,7 +66,7 @@ class ClientRepository
         }
     }
 
-    public static function destroy($id)
+    public function destroy($id)
     {
         try {
             $client = Client::find($id);
@@ -88,12 +88,12 @@ class ClientRepository
         }
     }
 
-    public static function getClientByDocument($document)
+    public function getClientByDocument($document)
     {
         return Client::where('document', $document)->first();
     }
 
-    public static function getClientById($id)
+    public function getClientById($id)
     {
         return Client::where('id', '=', $id)->first();
     }
