@@ -93,4 +93,9 @@ class ClientRepository
         return Client::where('document', $document)->first();
     }
 
+    public static function getClientById($id)
+    {
+        return Client::where('id', '=', $id)->first();
+    }
+
 }
