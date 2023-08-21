@@ -11,6 +11,16 @@ class ClientRepository
         return Client::all();
     }
 
+    public function getAllByFilters($filters){
+        $query = Client::query();
+
+        foreach($filters as $key => $value) {
+            $query->where($key, 'like', '%'.$value.'%');
+        }
+
+        return $query->get();
+    }
+
     public function store($requestBody)
     {
         try {

@@ -14,7 +14,17 @@ class ClientController extends Controller {
     }
 
 
-    public function index() {
+    public function index($filters) {
+        foreach($filters as $key => $value) {
+            if($value == NULL ) {
+                unset($filters[$key]);
+            }
+        }
+
+        if(count($filters) > 0){
+            return response()->json($this->clientRepository->getAllByFilters($filters), 200);
+        }
+
         return response()->json($this->clientRepository->index() , 200);
     }
 
