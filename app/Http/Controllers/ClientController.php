@@ -14,7 +14,7 @@ class ClientController extends Controller {
     }
 
 
-    public function index($filters) {
+    public function index($filters = []) {
         foreach($filters as $key => $value) {
             if($value == NULL ) {
                 unset($filters[$key]);
@@ -84,7 +84,7 @@ class ClientController extends Controller {
 
         $clientDocumentExists = $this->clientRepository->getClientByDocument($requestBody['document']);
 
-        if($clientDocumentExists) {
+        if($clientDocumentExists && $clientDocumentExists->id != $id) {
             return response()->json([
                 'message' => 'Client document already exists'
             ], 409);
